@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /uploads
+
+site_url: https://thegenesismoment.com
+display_url: https://thegenesismoment.com
+logo_url: /favicon.ico
+
+collections:
+  - name: episodes
+    label: Episodes
+    label_singular: Episode
+    folder: content/episodes
+    create: true
+    extension: json
+    format: json
+    identifier_field: title
+    slug: "{{slug}}"
+    fields:
+      - { label: Slug, name: slug, widget: string, hint: "Lowercase words separated by hyphens." }
+      - { label: Status, name: status, widget: select, options: [draft, published], default: draft }
+      - { label: Featured, name: featured, widget: boolean, default: false }
+      - { label: Category, name: tag, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Guest, name: guest, widget: string }
+      - { label: Business, name: business, widget: string, required: false }
+      - { label: Location, name: location, widget: string, required: false }
+      - { label: Duration, name: duration, widget: string, required: false }
+      - { label: Hero image, name: image, widget: image }
+      - { label: Video or audio URL, name: mediaUrl, widget: string, required: false }
+      - { label: Summary, name: summary, widget: text }
+      - { label: Pull quote, name: quote, widget: text }
+      - { label: Story, name: body, widget: text }
+  - name: thoughtcasts
+    label: Thoughtcasts
+    label_singular: Thoughtcast
+    folder: content/thoughtcasts
+    create: true
+    extension: json
+    format: json
+    identifier_field: title
+    slug: "{{slug}}"
+    fields:
+      - { label: Slug, name: slug, widget: string }
+      - { label: Status, name: status, widget: select, options: [draft, published], default: draft }
+      - { label: Featured, name: featured, widget: boolean, default: false }
+      - { label: Category, name: tag, widget: string }
+      - { label: Title, name: title, widget: string }
+      - { label: Duration, name: duration, widget: string, required: false }
+      - { label: Poster image, name: image, widget: image }
+      - { label: Video or audio URL, name: mediaUrl, widget: string, required: false }
+      - { label: Transcript, name: body, widget: text }
